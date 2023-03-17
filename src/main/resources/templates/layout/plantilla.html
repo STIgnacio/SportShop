@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head">
+        <title>SportShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
+        
+    </head>
+    <body>
+        <header class="header">
+
+            <div class="menu container">
+                <a href="#" class="logo">SportShop</a>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="carrito.html">Carro</a></li>
+                        <li><a href="info.html">Nosotros</a></li>
+                        <li><a th:href="@{/cliente/registro}">Iniciar sesion</a></li>
+                        <li><a href="mapa.html">Mapa</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-content container">
+
+                <div class="header-info">
+
+                    <div class="header-txt">
+                        <p>
+                            ARTICULOS DEPORTIVOS
+                        </p>
+                        <h1>ENVÍOS A TODO EL PÁIS</h1>
+                        <p>
+                            compra segura, facil
+                            y a domicilio.
+                        </p>
+                        <p>
+                            Somos su mejor opción en cuanto a artículos
+                            deportivos y ahorro de precio en todo 
+                            Costa Rica.
+                        </p>
+                        <a href="info.html" class="btn-1">Mas informacion</a>
+                    </div>
+
+                    <div class="header-img">
+                        <img src="img/zapato-removebg.png" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+        
+        <footer th:fragment="footer" 
+                class="bg-info text-white mt-5 p-2">          
+            <div class="container">              
+                <div class="col">                  
+                    <p class="lead text-center">                    
+                        &COPY; SportShop Derechos Reservados 2023
+                    </p>             
+                </div>          
+            </div>  
+        </footer>
+
+    </body>
+</html>

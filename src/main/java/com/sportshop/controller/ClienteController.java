@@ -27,6 +27,12 @@ public class ClienteController {
         return "/cliente/listado";
     }
     
+    @GetMapping("/registro")
+    public String registro(Cliente cliente){
+        return "/cliente/registro";
+    
+    }
+    
     @GetMapping("/eliminar/{idCliente}")
     public String eliminarCliente(Cliente cliente){
         clienteService.deleteCliente(cliente);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>SportShop</title>
+        <meta charset="UTF-8"/>
+    <body>
+         <header th:replace="~{layout/plantilla :: header}"/>
+        <h2>Datos de Cliente</h2>
+        <br>
+        <hr>
+        <a th:href="@{/}">Regresar</a>
+        
+        <form th:action="@{/cliente/guardar}"
+              method="post"
+              th:object="${cliente}">
+            
+            <input type="hidden" 
+                   name="idCliente" 
+                   th:field="*{idCliente}"/>
+            
+            <label>Nombre</label>
+            <input type="text" 
+                   name="Nombre" 
+                   value="" 
+                   th:field="*{nombre}" 
+                   size="30" />
+            <br>
+            <label>Apellidos</label>
+            <input type="text" 
+                   name="apellidos" 
+                   value="" 
+                   th:field="*{apellidos}" 
+                   size="40" />
+            <br>
+            <label>Correo</label>
+            <input type="email" 
+                   name="correo" 
+                   value="" 
+                   th:field="*{correo}" 
+                   size="40" />
+            <br>
+            <label>Teléfono</label>
+            <input type="tel" 
+                   name="telefono" 
+                   value="" 
+                   th:field="*{telefono}" 
+                   size="15" />
+            <br>
+            <input type="submit" value="Guardar" />
+            
+        </form>
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
