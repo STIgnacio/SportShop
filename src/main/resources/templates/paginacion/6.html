@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <title>SportShop</title>
+        <meta charset="UTF-8">    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+        <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link href="css/all.min.css" rel="stylesheet" type="text/css"/>
+        <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+        <script src="/js/imagen.js" type="text/javascript"></script>   
+    </head>
+<body>
+    <section th:replace="~{layout/plantilla :: navbar}"/>
+    <div class="espacio"></div>
+    <section th:replace="~{paginacion/2 :: sliders}"/>
+    <h2 class="filtrar">Filtrar por:</h2>
+    <form method="GET" action="/articulo/buscar-categoria">
+        <div class="container3">
+            <div class="row">
+                <label class="labelfiltro">Categorias</label>
+                <select id="categoria" name="descripcionCategoria" multiple multiselect-max-items="2" placeholder="">
+                    <option value="camisas">Camisas</option>
+                    <option value="camisetas">Camisetas</option>
+                    <option value="pantalones">Pantalones</option>
+                    <option value="balones">Balones</option>
+                    <option value="botines">Botines</option>
+                    <option value="zapatillas">Zapatillas</option>
+                    <option value="futbol">Futbol</option>
+                    <option value="baloncesto">Baloncesto</option>
+                </select>
+            </div>
+        </div>
+        <div class="container4">
+            <div class="row">
+                <label class="labelfiltro">Sexo</label>
+                <select id="sexo" name="descripcionCategoria" multiple multiselect-max-items="2" placeholder="">
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                    <option value="unisex">Unisex</option>
+                </select>
+            </div>
+        </div>
+        <div class="container5">
+            <div class="row">
+                <label class="labelfiltro">Marca</label>
+                <select id="marca" name="descripcionCategoria" multiple multiselect-max-items="2" placeholder="">
+                    <option value="nike">Nike</option>
+                    <option value="adidas">Adidas</option>
+                    <option value="puma">Puma</option>
+                    <option value="under armour">Under Armour</option>
+                    <option value="jordan">Jordan</option>
+                </select>
+            </div>
+        </div>
+        <div class="container6">
+            <div class="row">
+                <label class="labelfiltro">Niño/a</label>
+                <select id="ninos" name="descripcionCategoria" multiple multiselect-max-items="2" placeholder="">
+                    <option value="niño">Niño</option>
+                    <option value="niña">Niña</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="boton-filtro">Aplicar</button>
+    </form>
+    <main th:replace="~{layout/plantilla :: section_productos}"/>
+    <footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
+</html>
