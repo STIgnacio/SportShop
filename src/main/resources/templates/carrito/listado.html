@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: navbar}"/>
+
+        <section th:replace="~{carrito/fragmentosCarrito :: listadoCarrito}"/>
+        <pre class="pre">
+    <div class="contenedor_prueba" th:if="${items != null and !items.empty}">
+        <div class="pago">
+            <div>
+                <h3>Resumen</h3>
+                <p>Total a pagar</p>
+                <h4 class="fs-4">
+                    $ [[${carritoTotal}]]
+                </h4>
+                <a th:href="@{/}" class="btn_regreso">Seguir comprando</a>
+                <a th:href="@{/}" class="btn_pagar">Pagar</a>
+            </div>
+        </div>
+    </div>
+    <div class="sin_productos" th:if="${items== null or items.empty}">
+        <p>No hay productos en el carrito</p>
+    </div>
+        </pre>
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>

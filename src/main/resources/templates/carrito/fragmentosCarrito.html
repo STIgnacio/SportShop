@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="estilo.css">
+        <script src="app.js" async></script>
+        <head th:replace="~{layout/plantilla :: head}">
+            <title>TechShop</title>
+        </head>
+        <body>
+
+            <div th:fragment="verCarrito" th:if="${yes #lists.isEmpty(listaItem)}" class="cambio">            
+                <a th:href="@{/carrito/listado}" id="resultsBlock">Carrito</a>
+                <a th:href="@{/favorito/listado}" id="resultsBlock2">Favoritos</a>
+            </div>    
+
+            <section th:fragment="listadoCarrito" id="items">
+                <div class="container-car" th:each="item, contador : ${items}">
+                    <div>
+                        <div class="car" th:if="${items != null and !items.empty}">
+                            <div class="car_img">
+                                <div>
+                                    <img th:src="${item.imagen}"  width="200px">       
+                                </div>
+                            </div>
+                            <hr class="hrlinea">
+                        </div>
+                        <div class="car-info">
+                            <div class="namePrice_car">
+                                <h3>[[${item.descripcion}]]</h3>
+                                <span>[[${item.moneda}]][[${item.precio}]]</span>
+                                <p>[[${item.categoria.descripcion}]] - [[${item.sexo.descripcion}]]</p>
+                                <p>Cantidad:    [[${item.cantidad}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton_eliminar">
+                        <a th:href="@{/carrito/eliminar/}+${item.idArticulo}">
+                            <img src="/img/eliminar.png" style="width: 20px;">
+                        </a>
+                    </div>
+                    <div class="boton_actualizar">
+                        <a th:href="@{/carrito/modificar/}+${item.idArticulo}">
+                            <img src="/img/editar.png" style="width: 20px;">
+                        </a> 
+                    </div>
+                    <div class="espacios"></div>
+                </div>
+            </section>
+        </body>
+</html>

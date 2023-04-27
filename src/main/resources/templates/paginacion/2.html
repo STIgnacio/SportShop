@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+    <title>SportShop</title>
+    <meta charset="UTF-8"/>
+    <body>
+        <section th:replace="~{layout/plantilla :: navbar}"/>
+        <div class="espacio"></div>
+        <section th:fragment="sliders" class="slider-fondo">
+            <div class="slider">
+                <ul>
+                    <li>
+                        <h1>Slider 01</h1>
+                        <p>Este es el primer slider</p>
+                    </li>
+                    <li>
+                        <h1>Slider 02</h1>
+                        <p>Este es el segundo slider</p>
+                    </li>
+                    <li>
+                        <h1>Slider 03</h1>
+                        <p>Este es el tercer slider</p>
+                    </li>
+                    <li>
+                        <h1>Slider 04</h1>
+                        <p>Este es el cuarto slider</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <main th:replace="~{layout/plantilla :: section_productos}"/>
+    <secction class="paginacion">
+        <ul class="page">
+            <a th:href="@{/}" ><li><</li></a>
+            <a th:href="@{/}"><li>1</li></a>
+            <a th:href="@{/articulo/2}" class="active"><li>2</li></a>
+            <a th:href="@{/articulo/3}"><li>3</li></a>
+            <a th:href="@{/articulo/4}" ><li>4</li></a>
+            <a th:href="@{/articulo/5}" ><li>5</li></a>
+            <a th:href="@{/articulo/3}"><li>></li></a>
+        </ul>
+    </secction>
+    <footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
+</html>

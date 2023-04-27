@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+    <title>SportShop</title>
+    <meta charset="UTF-8"/>
+    <body>
+        <section th:replace="~{layout/plantilla :: navbar}"/>
+        <div class="espacio"></div>
+        <section th:replace="~{paginacion/2 :: sliders}"/>
+        <main th:replace="~{layout/plantilla :: section_productos}"/>
+    <secction class="paginacion">
+        <ul class="page">
+            <a th:href="@{/articulo/3}" ><li><</li></a>
+            <a th:href="@{/}"><li>1</li></a>
+            <a th:href="@{/articulo/2}"><li>2</li></a>
+            <a th:href="@{/articulo/3}"><li>3</li></a>
+            <a th:href="@{/articulo/4}" class="active"><li>4</li></a>
+            <a th:href="@{/articulo/5}" ><li>5</li></a>
+            <a th:href="@{/articulo/5}"><li>></li></a>
+        </ul>
+    </secction>
+    <footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
+</html>

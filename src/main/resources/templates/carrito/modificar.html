@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: navbar}"/>
+
+        <div class="container_modi">
+            <div class="car">
+                <div class="car_img">
+                    <img th:src="@{${item.imagen}}" width="200"/>  
+                </div>
+            </div>
+            <div class="car-info">
+                <div class="namePrice"></div>
+                <h3>[[${item.descripcion}]]</h3>
+                <span>[[${item.moneda}]][[${item.precio}]]</span>
+                <p>Cantidad:    [[${item.cantidad}]]</p>
+                <p>[[${item.detalle}]]</p>
+            </div>            
+            <div class="car_modifica">
+                <form th:action="@{/carrito/guardar}"
+                      method="post"
+                      th:object="${item}">
+                    <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                    <div class="cantidad">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" name="cantidad" th:field="*{cantidad}" 
+                               min='1' th:max="${item.existencias}"/>
+                    </div>                
+                    <div class="btn_guardar">                    
+                        <button class="btn btn-success" type="submit" name="guardar">
+                            <i class='fas fa-save'></i> Guardar
+                        </button>
+                    </div>
+                </form>
+                <div class="boton_eliminar_modifica">
+                    <a th:href="@{/carrito/eliminar/}+${item.idArticulo}">
+                        <img src="/img/eliminar.png" style="width: 20px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>

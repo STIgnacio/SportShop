@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inicio de Sesion</title>
+        <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="ruta/al/archivo/estilos.css">
+    </head>
+    <body>
+        <header>
+            <figure>
+                <a th:href="@{/}"><img class="logoRegistrom" src="/img/opcion1.png"></a>
+                <a th:href="@{/}" class="logoRegistro" style="color: #303030; text-decoration: none;">Sport<span style="color: #3c9fe0;">Shop</span></a>
+            </figure>
+        </header>
+        <section class="container">
+            <h2>Iniciar sesión</h2>
+            <form th:action="@{/registro/validar}" method="post">
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo">
+                </div>
+                <div class="form-group">
+                    <label for="contraseña">Contraseña:</label>
+                    <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña">
+                </div>
+                <div class="form-group">
+                    <p>¿No tienes una cuenta? <a th:href="@{./registro}">Regístrate aquí</a></p>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                </div>
+            </form>
+        </section>
+
+
+        <script>
+            function iniciarSesion(event) {
+                event.preventDefault();
+                // Obtener los valores de los campos del formulario
+                const usuario = document.getElementById('usuario').value;
+                const contraseña = document.getElementById('contraseña').value;
+                // Hacer algo con los datos (por ejemplo, enviarlos al servidor)
+                if (!usuario || !contraseña) {
+                    alert('Por favor, ingrese todos los datos requeridos');
+                    return false;
+                } else {
+                    alert('Registro exitoso');
+                    window.location.href = "http://localhost:92";
+                    return true;
+                }
+            }
+        </script>
+
+    </body>
+
+
+</body>
+</html>

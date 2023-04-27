@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="estilo.css">
+        <script src="app.js" async></script>
+        <head th:replace="~{layout/plantilla :: head}">
+            <title>TechShop</title>
+        </head>
+        <body>
+
+            <div th:fragment="verFavorito" th:if="${yes #lists.isEmpty(listaItemFab)}" class="cambio">            
+                <a th:href="@{/carrito/listado}" id="resultsBlock">Carrito</a>
+                <a th:href="@{/favorito/listado}" id="resultsBlock2">Favoritos</a>
+            </div> 
+
+
+            <section th:fragment="listadoFavorito" id="itemFabs">
+                <div class="container-fab" th:each="itemFab, contador : ${itemFabs}">
+                    <div>
+                        <div class="fab" th:if="${itemFabs != null and !itemFabs.empty}">
+                            <div class="fab_img">
+                                <div>
+                                    <img th:src="${itemFab.imagen}"  width="330px">       
+                                </div>
+                            </div>
+                            <hr class="hrlineafab">
+                        </div>
+                        <div class="fab-info">
+                            <div class="namePrice_fab">
+                                <h3>[[${itemFab.descripcion}]]</h3>
+                                <span>[[${itemFab.moneda}]][[${itemFab.precio}]]</span>
+                                <p>[[${itemFab.categoria.descripcion}]] - [[${itemFab.sexo.descripcion}]]</p>
+                                <p>Cantidad:    [[${itemFab.cantidad}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton_eliminar_fab">
+                        <a th:href="@{/favorito/eliminar/}+${itemFab.idArticulo}">
+                            <img src="/img/eliminar.png" style="width: 20px;">
+                        </a>
+                    </div>
+                    <div>
+                        <a th:href="@{/carrito/agregar/}+${itemFab.idArticulo}" class="btn_carrito">Añadir al carrito</a>
+                    </div>
+                    <div class="espacios"></div>
+                </div>
+            </section>
+        </body>
+</html>

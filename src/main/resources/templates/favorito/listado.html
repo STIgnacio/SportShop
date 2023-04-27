@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: navbar}"/>
+
+        <section th:replace="~{favorito/fragmentosFavorito :: listadoFavorito}"/>
+        <pre class="pre">
+    <div class="sin_productos" th:if="${itemFabs== null or itemFabs.empty}">
+        <p>No hay productos en el favorito</p>
+    </div>
+        </pre>
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>

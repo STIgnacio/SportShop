@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+    <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ruta/al/archivo/estilos.css">
+    
+    <style>
+        body {
+            background-image: url("/img/.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <figure>
+            <a th:href="@{/}"><img class="logoRegistrom" src="/img/opcion1.png"></a>
+            <a th:href="@{/}" class="logoRegistro" style="color: #303030; text-decoration: none;">Sport<span style="color: #3c9fe0;">Shop</span></a>
+        </figure>
+    </header>
+    <div class="container">
+        <h1>Actualización de datos</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>País</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="registro : ${registros}">
+                    <td th:text="${registro.nombres}"></td>
+                    <td th:text="${registro.apellidos}"></td>
+                    <td th:text="${registro.correo}"></td>
+                    <td th:text="${registro.pais}"></td>
+                    <td th:text="${registro.fechaNacimiento}"></td>
+                    <td>
+                        <a th:href="@{/registro/modificar/{idRegistro}(idRegistro=${registro.idRegistro})}" class="btn btn-primary btn-sm">Editar</a>
+                        <a th:href="@{/registro/eliminar/{idRegistro}(idRegistro=${registro.idRegistro})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+
+
+
