@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Slf4j
@@ -36,7 +37,7 @@ public class CarritoController {
 
     //Para Agregar un articulo al carrito
     @GetMapping("/carrito/agregar/{idArticulo}")
-    public ModelAndView agregarItem(Model model, Item item) {
+    public RedirectView agregarItem(Model model, Item item) {
         Item item2 = itemService.get(item);
         if (item2 == null) {
             Articulo articulo = articuloService.getArticulo(item);
@@ -53,9 +54,8 @@ public class CarritoController {
         model.addAttribute("listaItems", lista);
         model.addAttribute("listaTotal", totalCarritos);
         model.addAttribute("carritoTotal", carritoTotalVenta);
-        return new ModelAndView("/carrito/fragmentosCarrito :: verCarrito");
+        return new RedirectView("redirect:/");
     }
-    
 
     //Para mofificar un articulo del carrito
     @GetMapping("/carrito/modificar/{idArticulo}")
@@ -70,7 +70,13 @@ public class CarritoController {
     public String eliminarItem(Item item) {
         itemService.delete(item);
         return "redirect:/carrito/listado";
-    } 
+    }
+
+    @GetMapping("/carrito/eliminar-todos")
+    public String eliminarTodosLosItems() {
+        itemService.deleteAll();
+        return "redirect:/";
+    }
 
     //Para actualizar un articulo del carrito (cantidad)
     @PostMapping("/carrito/guardar")
@@ -78,7 +84,7 @@ public class CarritoController {
         itemService.actualiza(item);
         return "redirect:/carrito/listado";
     }
-    
+
     //Para facturar los articulos del carrito... no implementado...
     @GetMapping("/facturar/carrito")
     public String facturarCarrito() {

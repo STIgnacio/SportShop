@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
     <head th:fragment="head">
         <title>SportShop</title>
@@ -21,7 +22,7 @@
             <img class="imgen2" src="img/bg.svg" alt="">
                 <section th:fragment="navbar">
                     <div class="menu">
-                        <a th:href="@{/}" class="logo">Sport<span style="color: #3c9fe0;">Shop</span></a>
+                        <a th:href="@{/}" class="logo" style="margin-left: 60px;">Sport<span style="color: #3c9fe0;">Shop</span></a>
                         <div class="form2">
                             <form method="GET" action="/articulo/buscar">
                                 <div>
@@ -35,8 +36,10 @@
                                 <li id="resultsBlock2"><a th:href="@{/favorito/listado}">Favoritos</a></li>
                             </ul>
                         </nav>
-                        <a th:href="@{/cliente/inicioSesion}" class="btn-2">Login</a>
-                        <a th:href="@{/registro/editarUsuario}" class="fas fa-user-edit"></a>
+                        <a th:href="@{/login}" class="btn-2">Login</a>
+                        <div sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/registro/editarUsuario}" class="fas fa-user-edit"></a>
+                        </div>
                     </div>
                 </section>
 
@@ -58,7 +61,7 @@
                                 deportivos y ahorro de precio en todo 
                                 Costa Rica.
                             </p>
-                            <a th:href="info.html" class="btn-1">Mas informacion</a>
+                            <a th:href="@{/}" class="btn-1">Mas informacion</a>
                         </div>
 
                         <div class="header-img">
@@ -73,20 +76,20 @@
             <div class="slider">
                 <ul>
                     <li>
-                        <h1>Slider 01</h1>
-                        <p>Este es el primer slider</p>
+                        <h1>Nuevos productos</h1>
+                        <p>Compra dos o más productos y obtén un 25 % de descuento.</p>
                     </li>
                     <li>
-                        <h1>Slider 02</h1>
-                        <p>Este es el segundo slider</p>
+                        <h1>Devoluciones y entregas gratuitas</h1>
+                        <p>Tienes envíos gratuitos y devoluciones gratuitas en un plazo de 30 días.</p>
                     </li>
                     <li>
-                        <h1>Slider 03</h1>
-                        <p>Este es el tercer slider</p>
+                        <h1>Nuevos productos</h1>
+                        <p>Compra dos o más productos y obtén un 25 % de descuento.</p>
                     </li>
                     <li>
-                        <h1>Slider 04</h1>
-                        <p>Este es el cuarto slider</p>
+                        <h1>Devoluciones y entregas gratuitas</h1>
+                        <p>Tienes envíos gratuitos y devoluciones gratuitas en un plazo de 30 días.</p>
                     </li>
                 </ul>
             </div>
@@ -130,9 +133,17 @@
                                 </button>
                             </form>
                         </div> 
-                        <div class="bay"> 
-                            <button>Comprar</button> 
-                        </div> 
+                        <div class="bay">
+                            <form>
+                                <input type="hidden" name="texto" th:value="${articulo.idArticulo}"/>
+                                <input type="hidden" name="texto" th:value="${articulo.existencias}"/>
+                                <button id="addCar" 
+                                        name="addCar" onclick="addCard2(this.form)"  
+                                        type="button" >
+                                    Comprar
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

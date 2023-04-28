@@ -54,6 +54,11 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
+    @Override
+    public void deleteAll() {
+    listaItems.clear();
+    } 
+    
     //Se obtiene la información de un articulo del carrito... para modificarlo
     @Override
     public Item get(Item item) {

@@ -57,7 +57,7 @@ public class RegistroController {
     @GetMapping("/eliminar/{idRegistro}")
     public String eliminarRegistro(Registro registro){
         registroService.deleteRegistro(registro);
-        return "redirect:/registro/inicioSesion";
+        return "redirect:/registro/editarUsuario";
     }
     
     

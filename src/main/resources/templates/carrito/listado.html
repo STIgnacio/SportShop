@@ -18,7 +18,7 @@
                     $ [[${carritoTotal}]]
                 </h4>
                 <a th:href="@{/}" class="btn_regreso">Seguir comprando</a>
-                <a th:href="@{/}" class="btn_pagar">Pagar</a>
+                <a th:href="@{/carrito/eliminar-todos}" class="btn_pagar" onclick="showConfirmation()">Pagar</a>
             </div>
         </div>
     </div>

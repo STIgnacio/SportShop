@@ -16,6 +16,8 @@ public interface ItemService {
     //Se elimina el registro que tiene el idItem pasado por parámetro
     public void delete(Item item);
     
+    public void deleteAll();
+    
     //Si el objeto item tiene un idItem que existe en la tabla item
     //El registro de actualiza con la nueva información
     //Si el idItem NO existe en la tabla, se crea el registro con esa información

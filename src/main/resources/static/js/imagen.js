@@ -32,6 +32,20 @@ function addFabo(formulario) {
     $("#resultsBlock2").load(url);
 }
 
+function addCard2(formulario) {
+    var valor = formulario.elements[0].value;
+    var url = '/carrito/agregar';
+    url = url + '/' + valor;
+    $("#resultsBlock").load(url, function () {
+        window.location.href = '/carrito/listado';
+    });
+}
+
+function showConfirmation() {
+    alert('¡Compra exitosa!');
+    
+}
+
 function cambiarImagencarro(imagen) {
     if (seleccionadocarro) {
         imagen.src = '/img/carrito.png';
